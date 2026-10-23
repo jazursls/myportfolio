@@ -71,3 +71,119 @@ window.addEventListener("storage", function (event) {
     }
 
 });
+
+const projects = [
+    {
+        title: "Gemma Marie",
+        year: 2025,
+        poster: "assets/gemmamarie.png",
+        role: "Directed"
+    },
+    {
+        title: "One Last Time",
+        year: 2026,
+        poster: "assets/onelasttime.png",
+        role: "Directed"
+    },
+    {
+        title: "Tatlong Hapag",
+        year: 2026,
+        poster: "assets/tatlonghapag.png",
+        role: "Sound Design"
+    }
+];
+
+const filmsList = document.querySelector("#films-list");
+function isValidProject(project) {
+    return (
+        project &&
+        typeof project.title === "string" &&
+        project.title.trim() !== "" &&
+        Number.isInteger(project.year) &&
+        project.year > 0 &&
+        typeof project.poster === "string" &&
+        project.poster.trim() !== "" &&
+        typeof project.role === "string" &&
+        project.role.trim() !== ""
+    );
+}
+const uniqueProjects = projects.filter(function (project, index, array) {
+    return array.findIndex(function (item) {
+        return (
+            item.title.trim().toLowerCase() ===
+                project.title.trim().toLowerCase() &&
+            item.year === project.year
+        );
+    }) === index;
+});
+
+function createProjectElement(project) {
+    const listItem = document.createElement("li");
+    listItem.classList.add("short-film");
+
+    const figure = document.createElement("figure");
+
+    const poster = document.createElement("img");
+    poster.src = project.poster;
+    poster.alt = project.title;
+
+    poster.addEventListener("error", function () {
+        poster.alt = project.title + " poster unavailable";
+        poster.removeAttribute("src");
+    }, { once: true });
+
+    const caption = document.createElement("figcaption");
+    caption.textContent =
+        project.title + " (" + project.year + ") - " + project.role;
+
+    figure.appendChild(poster);
+    figure.appendChild(caption);
+    listItem.appendChild(figure);
+
+    return listItem;
+}
+
+const projectsPerPage = 6;
+let displayedCount = 0;
+
+const loadMoreButton = document.createElement("button");
+loadMoreButton.type = "button";
+loadMoreButton.textContent = "Load More Projects";
+loadMoreButton.hidden = true;
+loadMoreButton.id = "load-more-projects";
+
+const validProjects = uniqueProjects.filter(isValidProject);
+
+function displayProjects() {
+    if (!filmsList) {
+        return;
+    }
+
+    if (validProjects.length === 0) {
+        filmsList.textContent = "No projects are available right now.";
+        loadMoreButton.hidden = true;
+        return;
+    }
+
+    const nextProjects = validProjects.slice(
+        displayedCount,
+        displayedCount + projectsPerPage
+    );
+
+    nextProjects.forEach(function (project) {
+        const projectElement = createProjectElement(project);
+        filmsList.appendChild(projectElement);
+    });
+
+    displayedCount += nextProjects.length;
+
+    loadMoreButton.hidden = displayedCount >= validProjects.length;
+}
+
+if (filmsList) {
+    filmsList.after(loadMoreButton);
+}
+
+loadMoreButton.addEventListener("click", displayProjects);
+
+displayProjects();

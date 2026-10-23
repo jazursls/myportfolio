@@ -61,8 +61,8 @@ a {
 }
 
 a:hover {
-    background-color: var(--grey);
-    color: var(--text-white);
+    background-color: white;
+    color: black;
 }
     
 a:focus {
@@ -236,6 +236,48 @@ main > section, main > article {
     font-weight: bold;
 }
 
+#load-more-projects {
+    margin-top: var(--spacing-large);
+    padding: var(--spacing-small) var(--spacing-medium);
+    background-color: var(--foreground-color);
+    color: var(--text-black);
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#load-more-projects:hover {
+    background-color: var(--grey);
+    color: var(--text-white);
+}
+
+#load-more-projects:focus {
+    outline: 2px solid var(--grey);
+    outline-offset: 2px;
+}
+
+#load-more-projects {
+    margin-top: var(--spacing-large);
+    padding: var(--spacing-small) var(--spacing-medium);
+    background-color: var(--foreground-color);
+    color: var(--text-black);
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#load-more-projects:hover {
+    background-color: white;
+    color: black;
+}
+
+#load-more-projects:focus {
+    outline: 2px solid var(--grey);
+    outline-offset: 2px;
+}
+
 #skills table {
     margin: auto;
     width: 60%;
@@ -273,8 +315,8 @@ th, td {
 }
 
 #feedback button:hover {
-    background-color: var(--grey);
-    color: var(--text-white);
+    background-color: white;
+    color: black;
 }
 
 #feedback button:focus {
