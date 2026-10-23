@@ -1,7 +1,7 @@
 :root {
     --grey: #545b5e;
     --text-white: #f5f5f5;
-    --text-black: ##030303;
+    --text-black: #030303;
     --background-color: #e0e0e0;
     --foreground-color: #ffffff;
 
@@ -13,6 +13,14 @@
     --text-size-medium: 2rem;
     --text-size-large: 2.5rem;
     --text-size-xlarge: 3rem;
+}
+
+body.dark-mode {
+    --grey: #0a0a0a;
+    --background-color: #121212;
+    --foreground-color: #1e1e1e;
+    --text-black: #f5f5f5;
+    --text-white: #f5f5f5;
 }
 
 * {
@@ -79,7 +87,27 @@ header {
 
     #nav-toggle {
     display: none;
-}
+    }
+
+    #dark-mode-toggle {
+        display: inline-block;
+        padding: 3px 3px;
+        font-size: 13; 
+        color: var(--text-white);
+        text-decoration: none;
+        background-color: var(--grey);
+        border-radius: 5px;
+        border: 1px solid var(--text-white);
+        margin-left: var(--spacing-small);
+        transition: 0.2s;
+    }
+
+    #dark-mode-toggle:hover {
+        background-color: white;
+        color: black;
+        transform: translateY(-4px);
+    }
+
 }
 
 header img {
@@ -111,8 +139,8 @@ nav {
 }
 
 .nav-button:hover {
-    background-color: var(--background-color);
-    color: var(--text-black);
+    background-color: white;
+    color: black;
     transform: translateY(-4px);
 }
 
@@ -275,6 +303,14 @@ footer {
         flex-wrap: wrap;
         gap: var(--spacing-small);
 
+        .header-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-small);
+        }
+
             #nav-toggle {
                 display: inline-block;
                 padding: 3px 3px;
@@ -289,12 +325,13 @@ footer {
             }
 
             #nav-toggle:hover {
-                background-color: var(--background-color);
-                color: var(--text-black);
+                background-color: white;
+                color: black;
+                transform: translateY(-4px);
             }
 
             #nav-toggle:focus {
-                outline: 2px solid var(--background-color);
+                outline: 2px solid white;
                 outline-offset: 2px;
             }
 
