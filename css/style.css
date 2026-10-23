@@ -76,6 +76,10 @@ header {
     align-items: center;
     gap: var(--spacing-large);
     z-index: 1000;
+
+    #nav-toggle {
+    display: none;
+}
 }
 
 header img {
@@ -270,6 +274,30 @@ footer {
         align-items: center;
         flex-wrap: wrap;
         gap: var(--spacing-small);
+
+            #nav-toggle {
+                display: inline-block;
+                padding: 3px 3px;
+                font-size: 13; 
+                color: var(--text-white);
+                text-decoration: none;
+                background-color: var(--grey);
+                border-radius: 5px;
+                border: 1px solid var(--text-white);
+                margin-left: var(--spacing-small);
+                transition: 0.2s;
+            }
+
+            #nav-toggle:hover {
+                background-color: var(--background-color);
+                color: var(--text-black);
+            }
+
+            #nav-toggle:focus {
+                outline: 2px solid var(--background-color);
+                outline-offset: 2px;
+            }
+
     }
 
     header img {
@@ -393,4 +421,8 @@ nav {
     font-size: 12px;
 }
 
+}
+
+.hidden {
+    display: none;
 }
