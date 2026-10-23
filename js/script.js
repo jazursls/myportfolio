@@ -2,6 +2,10 @@ const navtoggle = document.querySelector("#nav-toggle");
 const navigation = document.querySelector("nav");
 const darkmodetoggle = document.querySelector("#dark-mode-toggle");
 const savedtheme = localStorage.getItem("theme");
+const feedbackForm = document.querySelector("#feedback-form");
+const commentInput = document.querySelector("#comment");
+const feedbackMessage = document.querySelector("#feedback-message");
+const feedbackSubmit = document.querySelector("#feedback-submit");
 const mobileView = window.matchMedia("(max-width: 768px)");
 
 if (savedtheme === "dark") {
@@ -187,3 +191,40 @@ if (filmsList) {
 loadMoreButton.addEventListener("click", displayProjects);
 
 displayProjects();
+
+let isSubmitting = false;
+
+feedbackForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (isSubmitting) {
+        return;
+    }
+
+    isSubmitting = true;
+    feedbackSubmit.disabled = true;
+    feedbackMessage.textContent = "";
+
+    try {
+        const comment = commentInput.value.trim();
+
+        if (comment === "") {
+            feedbackMessage.textContent =
+                "No comment provided.";
+        } else {
+            feedbackMessage.textContent =
+                "Thanks for your comment!";
+            commentInput.value = "";
+        }
+
+    } catch (error) {
+        feedbackMessage.textContent =
+            "Something went wrong. Please try submitting again.";
+
+        console.error("Feedback submission error:", error);
+
+    } finally {
+        isSubmitting = false;
+        feedbackSubmit.disabled = false;
+    }
+});

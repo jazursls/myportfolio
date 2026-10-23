@@ -76,27 +76,8 @@
         <section id="projects">
             <h2>My Projects</h2>
             <h3>Short Films</h3>
-            <ul class="filmsrow">
-                <li class="short-film">
-                    <figure>
-                        <img src="assets/gemmamarie.png" alt="Gemma Marie">
-                        <figcaption>Gemma Marie (2025) - Directed</figcaption>
-                    </figure>
-                </li>
-
-                <li class="short-film">
-                    <figure>
-                        <img src="assets/onelasttime.png" alt="One Last Time">
-                        <figcaption>One Last Time (2026) - Directed</figcaption>
-                    </figure>
-                </li>
-
-                <li class="short-film">
-                    <figure>
-                        <img src="assets/tatlonghapag.png" alt="Tatlong Hapag">
-                        <figcaption>Tatlong Hapag (2026) - Sound Design</figcaption>
-                    </figure>
-                </li>
+            <ul class="filmsrow" id="films-list">
+                
             </ul>
         </section>
 
@@ -147,11 +128,13 @@
         <article id="feedback">
             <h3>Leave some feedback!</h3>
             <p>I'd love to hear from you! Whether it's a question, a suggestion, or just a hello, feel free to comment.</p>
-            <form>
-                <label for="comment">Your Comment:</label>
+            <form id="feedback-form">
+                <label for="comment">Your Comment (Optional):</label>
                 <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
                 <br>
-                <button type="submit">Submit</button>
+                <button id="feedback-submit" type="submit">Submit</button>
+
+                <p id="feedback-message" role="status" aria-live="polite"></p>
             </form>
         </article>
 
